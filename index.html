@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Confetti Container -->
+    <div id="confetti-container"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>📚 Student Performance Hub</h1>
+                <p class="subtitle">Track, Learn & Achieve</p>
+            </div>
+            <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">🌙</button>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+            <button class="nav-btn" data-section="students">Students</button>
+            <button class="nav-btn" data-section="studentInfo">Student Info</button>
+            <button class="nav-btn" data-section="leaderboard">Leaderboard</button>
+            <button class="nav-btn" data-section="quiz">Quiz</button>
+            <button class="nav-btn" data-section="analytics">Analytics</button>
+            <button class="nav-btn" data-section="achievements">Achievements</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <h2>Welcome to Your Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <h3>Total Students</h3>
+                        <p class="stat-value" id="totalStudents">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <h3>Average Score</h3>
+                        <p class="stat-value" id="avgScore">0%</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <h3>Top Performer</h3>
+                        <p class="stat-value" id="topPerformer">-</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <h3>Quizzes Completed</h3>
+                        <p class="stat-value" id="quizzesCompleted">0</p>
+                    </div>
+                </div>
+
+                <div class="recent-section">
+                    <h3>Recent Student Activities</h3>
+                    <div id="recentActivities" class="activities-list"></div>
+                </div>
+            </section>
+
+            <!-- Students Section -->
+            <section id="students" class="section">
+                <h2>Student Management</h2>
+                <div class="add-student-form">
+                    <input type="text" id="studentName" placeholder="Enter student name">
+                    <input type="number" id="studentScore" placeholder="Enter score (0-100)">
+                    <button class="btn-primary" onclick="addStudent()">Add Student</button>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="searchStudent" placeholder="🔍 Search students..." onkeyup="searchStudents()">
+                </div>
+                <div id="studentsList" class="students-grid"></div>
+            </section>
+
+            <!-- Student Information & Attendance Section -->
+            <section id="studentInfo" class="section">
+                <h2>📋 Student Information & Attendance</h2>
+                <div class="student-info-container">
+                    <div class="student-selector">
+                        <select id="studentSelect" onchange="displayStudentInfo()" class="student-dropdown">
+                            <option value="">-- Select a Student --</option>
+                        </select>
+                    </div>
+                    <div id="studentInfoCard" class="student-info-card" style="display: none;">
+                        <div class="info-header">
+                            <div class="student-profile">
+                                <div class="profile-icon">👤</div>
+                                <div class="profile-info">
+                                    <h3 id="infoName"></h3>
+                                    <p id="infoId"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-stats">
+                            <div class="info-stat">
+                                <label>Total Score:</label>
+                                <span id="infoScore">0%</span>
+                            </div>
+                            <div class="info-stat">
+                                <label>Quizzes Attempted:</label>
+                                <span id="infoQuizzes">0</span>
+                            </div>
+                            <div class="info-stat">
+                                <label>Attendance Rate:</label>
+                                <span id="infoAttendance">0%</span>
+                            </div>
+                            <div class="info-stat">
+                                <label>Grade:</label>
+                                <span id="infoGrade">-</span>
+                            </div>
+                        </div>
+                        <div class="attendance-section">
+                            <h4>📅 Attendance History</h4>
+                            <div id="attendanceList" class="attendance-list"></div>
+                        </div>
+                    </div>
+                    <div id="noStudentSelected" class="no-selection-message">
+                        <p>Select a student to view their detailed information and attendance records</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leaderboard Section -->
+            <section id="leaderboard" class="section">
+                <h2>🏆 Leaderboard</h2>
+                <div class="leaderboard-container">
+                    <div id="leaderboardList" class="leaderboard-list"></div>
+                </div>
+            </section>
+
+            <!-- Quiz Section -->
+            <section id="quiz" class="section">
+                <h2>🎯 Quiz Challenge</h2>
+                <div id="quizStartMenu" class="quiz-menu">
+                    <h3>Select a Quiz</h3>
+                    <div id="quizList" class="quiz-list"></div>
+                </div>
+                <div id="quizContent" class="quiz-container" style="display: none;">
+                    <div class="quiz-header">
+                        <h3 id="quizTitle"></h3>
+                        <div class="quiz-stats">
+                            <div class="quiz-progress">
+                                <span id="questionNumber"></span> / <span id="totalQuestions"></span>
+                            </div>
+                            <div class="quiz-timer" id="quizTimer">⏱️ <span id="timerValue">0</span>s</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" id="quizProgressBar"></div>
+                    </div>
+                    <div id="questionContainer" class="question-container"></div>
+                </div>
+                <div id="quizResults" class="quiz-results" style="display: none;">
+                    <h3>🎉 Quiz Completed!</h3>
+                    <div class="result-card">
+                        <div id="gradeDisplay" class="grade-circle"></div>
+                        <p>Score: <span id="finalScore"></span>%</p>
+                        <p>Correct: <span id="correctCount"></span> / <span id="totalCount"></span></p>
+                        <p>Time: <span id="timeTaken"></span>s</p>
+                        <p id="achievementMessage" class="achievement-msg"></p>
+                    </div>
+                    <button class="btn-primary" onclick="backToQuizMenu()">Try Another Quiz</button>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="section">
+                <h2>Performance Analytics</h2>
+                <div class="analytics-grid">
+                    <div class="chart-card">
+                        <h3>Student Performance Distribution</h3>
+                        <div id="performanceChart" class="chart"></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Score Breakdown</h3>
+                        <div id="scoreTable" class="score-table"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements Section -->
+            <section id="achievements" class="section">
+                <h2>🏅 Achievements & Badges</h2>
+                <div class="achievements-grid">
+                    <div class="achievement-category">
+                        <h3>🌟 Performance Badges</h3>
+                        <div id="performanceBadges" class="badges-container"></div>
+                    </div>
+                    <div class="achievement-category">
+                        <h3>🎯 Quiz Milestones</h3>
+                        <div id="milestones" class="badges-container"></div>
+                    </div>
+                    <div class="achievement-category">
+                        <h3>⭐ Special Achievements</h3>
+                        <div id="specialAchievements" class="badges-container"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+{
+  "quizzes": [
+    {
+      "id": 1,
+      "title": "Mathematics Basics",
+      "description": "Test your math skills",
+      "questions": [
+        {
+          "question": "What is 15 + 27?",
+          "options": ["42", "43", "40", "44"],
+          "correct": 0
+        },
+        {
+          "question": "What is 100 ÷ 5?",
+          "options": ["15", "20", "25", "30"],
+          "correct": 1
+        },
+        {
+          "question": "What is 12 × 8?",
+          "options": ["86", "94", "96", "100"],
+          "correct": 2
+        },
+        {
+          "question": "What is 50 - 18?",
+          "options": ["32", "30", "28", "35"],
+          "correct": 0
+        },
+        {
+          "question": "What is 7²?",
+          "options": ["42", "49", "56", "63"],
+          "correct": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "General Knowledge",
+      "description": "Expand your knowledge",
+      "questions": [
+        {
+          "question": "What is the capital of France?",
+          "options": ["Lyon", "Paris", "Marseille", "Toulouse"],
+          "correct": 1
+        },
+        {
+          "question": "Which planet is closest to the sun?",
+          "options": ["Venus", "Mercury", "Earth", "Mars"],
+          "correct": 1
+        },
+        {
+          "question": "Who wrote Romeo and Juliet?",
+          "options": ["Christopher Marlowe", "William Shakespeare", "Ben Jonson", "John Webster"],
+          "correct": 1
+        },
+        {
+          "question": "What is the largest ocean on Earth?",
+          "options": ["Atlantic", "Indian", "Arctic", "Pacific"],
+          "correct": 3
+        },
+        {
+          "question": "In what year did World War II end?",
+          "options": ["1943", "1944", "1945", "1946"],
+          "correct": 2
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Science & Technology",
+      "description": "Challenge your tech knowledge",
+      "questions": [
+        {
+          "question": "What does HTML stand for?",
+          "options": ["Hyper Text Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language"],
+          "correct": 0
+        },
+        {
+          "question": "What is the chemical symbol for Gold?",
+          "options": ["Go", "Gd", "Au", "Ag"],
+          "correct": 2
+        },
+        {
+          "question": "How many bytes are in a gigabyte?",
+          "options": ["1000", "1,000,000", "1,000,000,000", "1,000,000,000,000"],
+          "correct": 2
+        },
+        {
+          "question": "What is the speed of light approximately?",
+          "options": ["300,000 km/s", "150,000 km/s", "500,000 km/s", "100,000 km/s"],
+          "correct": 0
+        },
+        {
+          "question": "Who invented the Internet?",
+          "options": ["Bill Gates", "Steve Jobs", "Vint Cerf and Bob Kahn", "Tim Berners-Lee"],
+          "correct": 2
+        }
+      ]
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "score": 85,
+      "quizzesCompleted": 2,
+      "lastActivity": "Completed Science Quiz"
+    },
+    {
+      "id": 2,
+      "name": "Bob Smith",
+      "score": 92,
+      "quizzesCompleted": 3,
+      "lastActivity": "Completed Math Quiz"
+    },
+    {
+      "id": 3,
+      "name": "Carol White",
+      "score": 78,
+      "quizzesCompleted": 1,
+      "lastActivity": "Started General Knowledge"
+    }
+  ]
+}
